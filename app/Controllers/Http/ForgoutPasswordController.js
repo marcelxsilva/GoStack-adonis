@@ -1,6 +1,7 @@
 'use strict'
 const crypto = require('crypto')
 const User = use('App/Models/User')
+const Mail = use('Mail')
 
 class ForgoutPasswordController {
   async store({ request, response }) {
@@ -11,9 +12,25 @@ class ForgoutPasswordController {
       user.token = crypto.randomBytes(10).toString('hex')
       user.token_created_at = new Date()
       await user.save()
-      return
+
+      await Mail.send(
+        ['emails.forgout_password'], // template de email
+        {
+          email,
+          token: user.token,
+          link: `${request.input('redirect_url')}?token=${user.token}`
+        }, // parametros para o email
+        message => {
+          message.
+            to(user.email)
+            .from('test@gmail.com', 'Test | GoStack')
+            .subject('Recuperacao de senha')
+        }
+      )
+
+
     } catch (error) {
-      return response.status(error.status).send({ error: { message: 'Email nao encontrado' }})
+      return response.status(error.status).send({ error: { message: 'Email nao encontrado' } })
     }
   }
 }
