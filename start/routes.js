@@ -7,4 +7,10 @@ Route.post('session', 'SessionController.store')
 Route.post('forgout-password', 'ForgoutPasswordController.store')
 Route.put('forgout-password', 'ForgoutPasswordController.update')
 Route.get('files/:id', 'FileController.show')
-Route.post('files', 'FileController.store')
+
+Route.group(() => {
+
+  Route.post('files', 'FileController.store')
+  Route.resource('projects', 'ProjectController').apiOnly()
+
+}).middleware(['auth'])
