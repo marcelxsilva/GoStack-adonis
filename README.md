@@ -17,13 +17,22 @@ Adonis é um ORM semelhante ao Sequelize, porém ele nos trás algumas abstraço
 Para seguir uma guia de estilo de desenvolvimento estou utilizando o eslint.
 
 
+Foi utilizado redis para realizar o processo de filas no envio dos emails rodando no docker
+
+Criando Docker
+
+      docker run --name redis -p 6379:6379 -d redis:alpine 
+
 ### Comandos
+Validator possibilita validar os valores de entrada em uma requisição, como p ex: ao criar um usuário o nome e email deve ser obrigatórios.
 
       # adonis make:validator < nome do validator >
 
-Validator possibilita validar os valores de entrada em uma requisição, como p ex: ao criar um usuário o nome e email deve ser obrigatórios.
+Hooks pode ser executado em dado momento durante a execução de um controller, podendo ser antes, depois e etc, comando para criar um hook:
 
       # adonis make:hook < nome do hook >
+
+
 
 
 ## Author
