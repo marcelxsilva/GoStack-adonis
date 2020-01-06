@@ -32,8 +32,9 @@ Hooks pode ser executado em dado momento durante a execução de um controller, 
 
       # adonis make:hook < nome do hook >
 
+Para colocar o Redis para ouvir as filas:
 
-
+      # adonis kue:listen
 
 ## Author
 
