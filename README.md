@@ -16,6 +16,16 @@ Adonis é um ORM semelhante ao Sequelize, porém ele nos trás algumas abstraço
 
 Para seguir uma guia de estilo de desenvolvimento estou utilizando o eslint.
 
+
+### Comandos
+
+      # adonis make:validator < nome do validator >
+
+Validator possibilita validar os valores de entrada em uma requisição, como p ex: ao criar um usuário o nome e email deve ser obrigatórios.
+
+      # adonis make:hook < nome do hook >
+
+
 ## Author
 
 👤 **Marcelo Silva**
